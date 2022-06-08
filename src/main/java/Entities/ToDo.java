@@ -1,25 +1,28 @@
 package Entities;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "todo")
 public class ToDo {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "todo_id", nullable = false)
     private Integer id;
     @Column(name = "name", nullable = false, length = 128)
     private String name;
 
     @Column(name = "isComplited", nullable = true)
     private boolean isComplited = false;
+    @Temporal(TemporalType.DATE)
     @Column(name = "date", nullable = true, length = 128)
     private LocalDate date;
-    @Column(name = "type", nullable = true, length = 128)
     private Type type = Type.other;
+
+    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @JoinColumn (name="toDoList_id")
+    private ToDoList toDoList;
 
     public Integer getId() {
         return id;
@@ -64,6 +67,12 @@ public class ToDo {
 
     public ToDo() {
     }
+
+    public ToDo(String name, boolean isComplited) {
+        this.name = name;
+        this.isComplited = isComplited;
+    }
+
     public ToDo(Integer id, String name, boolean isComplited, LocalDate date, Type type) {
         this.id = id;
         this.name = name;

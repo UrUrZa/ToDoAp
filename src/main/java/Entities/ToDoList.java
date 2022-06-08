@@ -1,9 +1,28 @@
 package Entities;
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 
+
+@Entity
+@Table(name = "todoList")
 public class ToDoList {
+    @Id
+    @Column(name = "toDoList_id", nullable = false)
+    private Integer id;
+    @Column(name = "name", nullable = false, length = 128)
     private String name;
-private ArrayList<ToDo> body = new ArrayList<ToDo>();
+    @OneToMany (mappedBy="toDoList", fetch=FetchType.EAGER)
+    private ArrayList<ToDo> body;
+
+    public ToDoList() {
+    }
+
+    public ToDoList(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
 
     public ToDoList(String name) {
         this.name = name;
@@ -16,7 +35,12 @@ private ArrayList<ToDo> body = new ArrayList<ToDo>();
     public void setName(String name) {
         this.name = name;
     }
-    public void AddToDo(ToDo toDo){
+
+    public int getId() {
+        return id;
+    }
+
+       public void AddToDo(ToDo toDo){
         body.add(toDo);
     }
     public void removeToDo(ToDo toDo){
@@ -27,7 +51,7 @@ private ArrayList<ToDo> body = new ArrayList<ToDo>();
     public String toString() {
         return "ToDoList{" +
                 "name='" + name + '\''+
-                ", body=" + body +
+                ", Id=" + Integer.valueOf(id) +
                 '}';
     }
 
