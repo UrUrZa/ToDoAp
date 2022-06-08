@@ -18,7 +18,6 @@ public class ToDo {
     @Temporal(TemporalType.DATE)
     @Column(name = "date", nullable = true, length = 128)
     private LocalDate date;
-    @Column(name = "type", nullable = true, length = 128)
     private Type type = Type.other;
 
     @ManyToOne(optional=false, cascade=CascadeType.ALL)
