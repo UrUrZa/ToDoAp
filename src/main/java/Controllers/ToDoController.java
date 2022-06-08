@@ -1,20 +1,26 @@
 package Controllers;
 
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import Entities.ToDo;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "api/v1/ToDo")
 public class ToDoController {
     @GetMapping
-    public String getToDo() {
-        return "ToDohvhjbjhbjj";
+    public ToDo getToDo() {
+        return new ToDo();
     }
     @DeleteMapping
-    public boolean deleteToDo(){
+    public boolean deleteToDo(int id){
+        System.out.println("ToDo deleted?");
+        System.out.println(id);
         return false;
     }
+    @PostMapping
+    public boolean updateToDo(@RequestBody ToDo toDo){
+        System.out.println(toDo.toString());
+        return false;
+    }
+
 }
