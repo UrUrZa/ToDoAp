@@ -13,7 +13,7 @@ public class ToDoList {
     @Column(name = "name", nullable = false, length = 128)
     private String name;
     @OneToMany (mappedBy="toDoList", fetch=FetchType.EAGER)
-    private ArrayList<ToDo> body;
+    private ArrayList<ToDo> body = new ArrayList<ToDo>();
 
     public ToDoList() {
     }
@@ -62,5 +62,14 @@ public class ToDoList {
         catch (NullPointerException e){
             System.out.println("Нечего печатать, сначала запланируй дела");
         }
+    }
+    public boolean searchToDo(int todo_id){
+        boolean result = false;
+        for (var tmp:
+             body) {
+            if(tmp.getId()==todo_id){
+                result = true;
+            }
+        }return result;
     }
   }
