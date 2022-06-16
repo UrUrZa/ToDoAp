@@ -13,7 +13,7 @@ public class ToDo {
     @Column(name = "name", nullable = false, length = 128)
     private String name;
 
-    @Column(name = "isComplited", nullable = true)
+    @Column(name = "getIsComplited", nullable = false)
     private boolean isComplited = false;
     @Temporal(TemporalType.DATE)
     @Column(name = "date", nullable = true, length = 128)
@@ -22,7 +22,7 @@ public class ToDo {
 
     @ManyToOne(optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="toDoList_id")
-    private ToDoList toDoList;
+    private int toDoList_id;
 
     public Integer getId() {
         return id;
@@ -41,7 +41,7 @@ public class ToDo {
         this.name = name;
     }
 
-    public boolean isComplited() {
+    public boolean getIsComplited() {
         return isComplited;
     }
 
@@ -66,8 +66,13 @@ public class ToDo {
     }
 
     public ToDo() {
-    }
 
+    }
+    public ToDo(Integer id, String name, boolean isComplited) {
+        this.id = id;
+        this.name = name;
+        this.isComplited = isComplited;
+    }
     public ToDo(String name, boolean isComplited) {
         this.name = name;
         this.isComplited = isComplited;
@@ -104,7 +109,7 @@ public class ToDo {
         return "ToDo{"+String.valueOf(id)+" " + name + '\'' +
                 ", type=" + type +
                 ", date=" + date +
-                ", isComplited=" + isComplited +
+                ", getIsComplited=" + isComplited +
                 '}';
     }
 

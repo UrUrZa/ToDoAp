@@ -12,8 +12,8 @@ public class ToDoList {
     private Integer id;
     @Column(name = "name", nullable = false, length = 128)
     private String name;
-    @OneToMany (mappedBy="toDoList", fetch=FetchType.EAGER)
-    private ArrayList<ToDo> body;
+    @OneToMany (mappedBy="toDoList_id", fetch=FetchType.EAGER)
+    private ArrayList<ToDo> body = new ArrayList<ToDo>();
 
     public ToDoList() {
     }
@@ -63,4 +63,20 @@ public class ToDoList {
             System.out.println("Нечего печатать, сначала запланируй дела");
         }
     }
+    public boolean searchToDo(int todo_id){
+        boolean result = false;
+        for (var tmp:
+             body) {
+            if(tmp.getId()==todo_id){
+                result = true;
+            }
+        }return result;
+    }
+    public String bodytoSrting(){
+        String result = "";
+        for (var tmp:
+                body) {
+            result = result +tmp.toString()+ "\n";
+            }return result;
+        }
   }
