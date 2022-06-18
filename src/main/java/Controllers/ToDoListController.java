@@ -16,6 +16,7 @@ public class ToDoListController {
         public static ToDoList somethingToDoList = new ToDoList(15, "TmpList");
 
         @Autowired
+        @GetMapping
         public ToDoList getToDoList(CaseGet caseGet) {
                 return caseGet.getToDoList();
 
@@ -49,13 +50,5 @@ public class ToDoListController {
                 somethingToDoList.printList();
                 return true;
         }
-    @RequestMapping(path = "/checkToDo")
-    @GetMapping
-    public String getToDoList(int id){
-        String result = "Not found";
-        if (somethingToDoList.getId()==id){
-            result = somethingToDoList.bodytoSrting();
-        } return result;
-    }
 }
 

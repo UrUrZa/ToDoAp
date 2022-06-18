@@ -13,7 +13,7 @@ public class ToDo {
     @Column(name = "name", nullable = false, length = 128)
     private String name;
 
-    @Column(name = "getIsComplited", nullable = false)
+    @Column(name = "getIsComplited", nullable = true)
     private boolean isComplited = false;
     @Temporal(TemporalType.DATE)
     @Column(name = "date", nullable = true, length = 128)
@@ -22,7 +22,7 @@ public class ToDo {
 
     @ManyToOne(optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="toDoList_id")
-    private int toDoList_id;
+    private ToDoList toDoList;
 
     public Integer getId() {
         return id;

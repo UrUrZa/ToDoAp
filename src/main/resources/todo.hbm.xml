@@ -7,7 +7,7 @@
 
     <class name="ToDo" table="todo">
         <id name="id" type="int" column="id" >
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <property name="name" >
             <column name="name" />

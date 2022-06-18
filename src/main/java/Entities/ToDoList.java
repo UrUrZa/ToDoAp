@@ -12,7 +12,7 @@ public class ToDoList {
     private Integer id;
     @Column(name = "name", nullable = false, length = 128)
     private String name;
-    @OneToMany (mappedBy="toDoList_id", fetch=FetchType.EAGER)
+    @OneToMany (mappedBy="toDoList", fetch=FetchType.EAGER)
     private ArrayList<ToDo> body = new ArrayList<ToDo>();
 
     public ToDoList() {
@@ -72,11 +72,4 @@ public class ToDoList {
             }
         }return result;
     }
-    public String bodytoSrting(){
-        String result = "";
-        for (var tmp:
-                body) {
-            result = result +tmp.toString()+ "\n";
-            }return result;
-        }
   }
