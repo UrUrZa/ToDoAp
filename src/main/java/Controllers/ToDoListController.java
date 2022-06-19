@@ -50,5 +50,19 @@ public class ToDoListController {
                 somethingToDoList.printList();
                 return true;
         }
+        @RequestMapping(path = "/checkToDo")
+        @GetMapping
+        public boolean checkToDo(int todo_id) {
+                boolean result = false;
+                System.out.println("ищем ToDo в List");
+                if (somethingToDoList.searchToDo(todo_id)) {
+                        System.out.println("Есть такое");
+                        System.out.println(somethingToDoList.getToDo(todo_id).toString());
+                        result = true;
+                } else {
+                        System.out.println("нет такого");
+
+                }return result;
+        }
 }
 

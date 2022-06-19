@@ -72,4 +72,13 @@ public class ToDoList {
             }
         }return result;
     }
+    public ToDo getToDo(int todo_id){
+        ToDo result = new ToDo();
+        for (var tmp:
+                body) {
+            if(tmp.getId()==todo_id){
+                result = tmp;
+            }
+        }return result;
+    }
   }
